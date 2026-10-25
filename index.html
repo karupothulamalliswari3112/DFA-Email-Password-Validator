@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashoka Women's Engineering College | Student Portal</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="strip">
+    <span>Admissions open for 2026–2027 batch</span>
+    <button class="strip-btn" type="button">Apply Now</button>
+  </div>
+
+  <nav>
+    <div class="brand">
+      <img class="brand-logo" src="logo.png" alt="Ashoka Women's Engineering College logo"
+           onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='flex';">
+      <div id="logoFallback" class="brand-logo fallback">AW</div>
+      <div class="brand-text">
+        <b>Ashoka Women's Engineering College</b>
+        <span>Autonomous Institution</span>
+      </div>
+    </div>
+    <ul class="links">
+      <li>Home</li><li>About</li><li>Programs</li><li>Departments</li><li>Placements</li><li>Student Corner</li>
+    </ul>
+    <button class="contact-btn" type="button">Contact Us</button>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Student Portal · Automata Theory &amp; Compiler Design</div>
+      <h1>Email &amp; Password <span>Validator</span></h1>
+      <p>A live Deterministic Finite Automaton that recognizes your official college email domain and checks password strength, one state at a time, with a voice-over.</p>
+    </div>
+    <div class="hero-glow"></div>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="card-head">
+        <span class="tag">DFA · Email Recognition</span>
+        <h2>Validate College Email</h2>
+      </div>
+      <form id="emailForm" novalidate>
+        <label for="email">Email Address</label>
+        <input id="email" type="text" placeholder="yourname@ashokacollege.in" autocomplete="off" spellcheck="false">
+        <button class="submit" type="submit">Run Validation</button>
+      </form>
+      <div id="emailResult" class="result" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <span class="tag">DFA · Password Strength</span>
+        <h2>Validate Password</h2>
+      </div>
+      <form id="passForm" novalidate>
+        <label for="pass">Password</label>
+        <div class="pw">
+          <input id="pass" type="password" placeholder="min 8 chars · upper · lower · digit · symbol" autocomplete="new-password">
+          <button type="button" class="eye" id="eye" aria-label="Show password">Show</button>
+        </div>
+        <div class="meter"><span id="meterBar"></span></div>
+        <ul class="checks" id="checks">
+          <li data-k="len">At least 8 characters</li>
+          <li data-k="upper">Uppercase letter</li>
+          <li data-k="lower">Lowercase letter</li>
+          <li data-k="digit">Digit</li>
+          <li data-k="symbol">Symbol</li>
+        </ul>
+        <button class="submit" type="submit">Run Validation</button>
+      </form>
+      <div id="passResult" class="result" aria-live="polite"></div>
+    </section>
+
+    <section class="card" id="voiceCard">
+      <div class="card-head">
+        <span class="tag">Voice Assistant</span>
+        <h2>Voice Settings</h2>
+      </div>
+      <div class="voice-grid">
+        <label class="switch"><input type="checkbox" id="voiceOn" checked> Voice-over on</label>
+        <div><label for="voiceSel">Voice</label><select id="voiceSel"></select></div>
+        <div><label for="rate">Speed: <b id="rateVal">1.0x</b></label><input id="rate" type="range" min="0.7" max="1.4" step="0.1" value="1"></div>
+        <div class="voice-btns">
+          <button class="submit ghost" type="button" id="testBtn">Test voice</button>
+          <button class="submit ghost" type="button" id="replayBtn" disabled>Replay last result</button>
+        </div>
+      </div>
+      <p class="note" id="voiceNote"></p>
+    </section>
+
+    <section class="card">
+      <details>
+        <summary>How the DFAs are defined (for viva)</summary>
+        <p><b>Email DFA</b> M = (Q, Σ, δ, q0, F)</p>
+        <ul>
+          <li>Q = {q0, q1, …, q18, qTRAP}</li>
+          <li>Σ = letters, digits and . _ - @</li>
+          <li>q0 = start, q1 = inside the name part, q2 = just after @, q3…q18 = matching each letter of <code>ashokacollege.in</code></li>
+          <li>F = {q18}. Any wrong or extra character goes to qTRAP and never comes back.</li>
+        </ul>
+        <p><b>Password DFA</b></p>
+        <ul>
+          <li>A state is written <code>q&lt;UL DS&gt;,n</code>: four bits say whether an uppercase, lowercase, digit and symbol have been seen, and n is the length so far (capped at 8).</li>
+          <li>That gives 16 × 9 = 144 states. F = {q1111,8}.</li>
+        </ul>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <p>Mini Project — Automata Theory &amp; Compiler Design · Ashoka Women's Engineering College</p>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>
