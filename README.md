@@ -50,7 +50,6 @@ DFA-Email-Password-Validator/
 ├── index.html
 ├── style.css
 ├── script.js
-├── logo.png        (optional college logo)
 └── README.md
 ```
 
